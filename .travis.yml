@@ -26,7 +26,7 @@ matrix:
       sudo: required
 
 before_install:
-  - sudo apt-get install libpq-dev
+  - sudo apt-get install --reinstall libpq-dev
 
 script:
   # Set up project build structure
