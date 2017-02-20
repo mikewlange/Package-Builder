@@ -54,10 +54,10 @@ download_packages() {
     packages="$(join_by_whitespace ${packages[@]})"
     echo "Fetching .debs for: $packages"
     if [ "$APT_PCKGS_LIST_UPDATED" = false ] ; then
-      apt-get $APT_OPTIONS update | indent
+      sudo apt-get $APT_OPTIONS update
       APT_PCKGS_LIST_UPDATED=true
     fi
-    apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $packages
+    sudo apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $packages
     echo "Downloaded DEB files..."
   fi
 }
