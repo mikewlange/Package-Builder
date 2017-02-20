@@ -45,7 +45,8 @@ script:
   # The custom build files must be in the $TRAVIS_BUILD_DIR
   #- echo "swift build -Xcc -I/usr/local/include -Xlinker -L/usr/local/lib/" > .swift-build-linux
   #- ls -la
-  - echo "swift build -Xcc -I/usr/local/include -Xlinker -L/usr/local/lib/" > Package-Builder/.swift-build-linux
+  #- echo "swift build -Xcc -I/usr/local/include -Xlinker -L/usr/local/lib/" > Package-Builder/.swift-build-linux
+  - echo "swift build -Xcc -I/usr/include/postgresql" > Package-Builder/.swift-build-linux
   - echo "libpq-dev" > Package-Builder/Aptfile
   - cd PostgreSQL
   - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR/PostgreSQL
