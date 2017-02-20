@@ -30,6 +30,10 @@ function usage {
   exit 1
 }
 
+join_by_whitespace() {
+  echo "$*"
+}
+
 download_packages() {
   local packages=("$@")
   for package in "${packages[@]}"; do
