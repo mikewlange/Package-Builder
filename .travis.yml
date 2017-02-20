@@ -25,6 +25,10 @@ matrix:
       osx_image: xcode8.2
       sudo: required
 
+before_install:
+  - brew install postgresql
+  - sudo apt-get install libpq-dev
+
 script:
   # Set up project build structure
   - git clone https://github.com/Zewo/PostgreSQL ../PostgreSQL

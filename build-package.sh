@@ -101,16 +101,16 @@ echo ">> PATH: $PATH"
 # Download any application specific system dependencies specified               #
 # in Aptfile (if present) using apt-get                                         #
 # ----------------------------------------------------------------------------- #
-if [ -e ${TRAVIS_BUILD_DIR}/Aptfile ] && [ "${osName}" == "linux" ]; then
-  echo "Aptfile found."
-  for PACKAGE in $(cat ${TRAVIS_BUILD_DIR}/Aptfile | sed $'s/\r$//'); do
-    echo "Entry found in Aptfile for $PACKAGE."
-    packages=($PACKAGE)
-    download_packages "${packages[@]}"
-  done
-else
-  echo "No Aptfile found."
-fi
+#if [ -e ${TRAVIS_BUILD_DIR}/Aptfile ] && [ "${osName}" == "linux" ]; then
+#  echo "Aptfile found."
+#  for PACKAGE in $(cat ${TRAVIS_BUILD_DIR}/Aptfile | sed $'s/\r$//'); do
+#    echo "Entry found in Aptfile for $PACKAGE."
+#    packages=($PACKAGE)
+#    download_packages "${packages[@]}"
+#  done
+#else
+#  echo "No Aptfile found."
+#fi
 
 # ----------------------------------------------------------------------------- #
 # Download any application specific system dependencies specified               #
