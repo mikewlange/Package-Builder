@@ -38,4 +38,5 @@ script:
   - cd ../executable
   - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR/executable
   - cd ../PostgreSQL
+  - echo "swift build -Xcc -I/usr/local/include -Xlinker -L/usr/local/lib/" > .swift-build-linux
   - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR/PostgreSQL
