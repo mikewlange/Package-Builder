@@ -30,6 +30,34 @@ function usage {
   exit 1
 }
 
+download_packages() {
+  local packages=("$@")
+  for package in "${packages[@]}"; do
+    # Check if CACHE_DIR already contains DEB file for package
+    if [ -f "$APT_CACHE_DIR/archives/$package*.deb" ]; then
+      status "$package was already downloaded."
+      # Remove element from array if DEB file already downloaded
+      unset 'packages[${package}]'
+      packages=("${packages[@]}")
+      continue
+    fi
+  done
+
+  if [ ${#packages[@]} -eq 0 ]; then
+    status "No additional packages to download."
+  else
+    # Turn string array into a space delimited string
+    packages="$(join_by_whitespace ${packages[@]})"
+    status "Fetching .debs for: $packages"
+    if [ "$APT_PCKGS_LIST_UPDATED" = false ] ; then
+      apt-get $APT_OPTIONS update | indent
+      APT_PCKGS_LIST_UPDATED=true
+    fi
+    apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $packages | indent
+    status "Downloaded DEB files..."
+  fi
+}
+
 while [ $# -ne 0 ]
 do
   case "$1" in
