@@ -57,7 +57,7 @@ download_packages() {
       apt-get $APT_OPTIONS update | indent
       APT_PCKGS_LIST_UPDATED=true
     fi
-    apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $packages | indent
+    apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $packages
     echo "Downloaded DEB files..."
   fi
 }
