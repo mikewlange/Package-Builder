@@ -26,7 +26,6 @@ matrix:
       sudo: required
 
 before_install:
-  - brew install postgresql
   - sudo apt-get install libpq-dev
 
 script:
