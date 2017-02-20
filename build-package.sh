@@ -70,14 +70,14 @@ echo ">> PATH: $PATH"
 # in Aptfile (if present) using apt-get                                         #
 # ----------------------------------------------------------------------------- #
 if [ -e ${TRAVIS_BUILD_DIR}/Aptfile ] && [ "${osName}" == "linux" ]; then
-  status "Aptfile found."
+  echo "Aptfile found."
   for PACKAGE in $(cat ${TRAVIS_BUILD_DIR}/Aptfile | sed $'s/\r$//'); do
-    status "Entry found in Aptfile for $PACKAGE."
+    echo "Entry found in Aptfile for $PACKAGE."
     packages=($PACKAGE)
     download_packages "${packages[@]}"
   done
 else
-  status "No Aptfile found."
+  echo "No Aptfile found."
 fi
 
 # ----------------------------------------------------------------------------- #
@@ -85,14 +85,14 @@ fi
 # in Aptfile (if present) using apt-get                                         #
 # ----------------------------------------------------------------------------- #
 if [ -e ${TRAVIS_BUILD_DIR}/Brewfile ] && [ "${osName}" == "osx" ]; then
-  status "Brewfile found."
+  echo "Brewfile found."
   for PACKAGE in $(cat ${TRAVIS_BUILD_DIR}/Brewfile | sed $'s/\r$//'); do
-    status "Entry found in Brewfile for $PACKAGE."
+    echo "Entry found in Brewfile for $PACKAGE."
     packages=($PACKAGE)
     brew install "${packages[@]}"
   done
 else
-  status "No Brewfile found."
+  echo "No Brewfile found."
 fi
 
 # Run SwiftLint to ensure Swift style and conventions
