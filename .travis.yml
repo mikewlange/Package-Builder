@@ -27,11 +27,15 @@ matrix:
 
 script:
   # Set up project build structure
+  - git clone https://github.com/Zewo/PostgreSQL ../PostgreSQL
   - mv tests/library ../library
   - mv tests/executable ../executable
   - cp -R ./ ../library/Package-Builder
   - cp -R ./ ../executable/Package-Builder
+  - cp -R ./ ../PostgreSQL/Package-Builder
   - cd ../library
   - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR/library
   - cd ../executable
   - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR/executable
+  - cd ../PostgreSQL
+  - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR/PostgreSQL
